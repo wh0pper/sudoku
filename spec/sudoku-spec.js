@@ -30,5 +30,8 @@ describe('Solution', function() {
     expect(solution.checkColumn(5)).toEqual(true);
   });
 
+  it('each unit 3x3 sub-square should have all numbers from 1 to 9 with no repeats', function() {
+    expect(solution.checkUnit(0)).toEqual(true);
+  });
 
 });

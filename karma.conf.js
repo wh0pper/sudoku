@@ -4,6 +4,10 @@ const webpackConfig = require('./webpack.config.js');
 
 module.exports = function(config) {
   config.set({
+    browserConsoleLogOptions: {
+      terminal: false,
+      level: ""
+    },
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
