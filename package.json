@@ -1,5 +1,5 @@
 {
-  "name": "triangles",
+  "name": "sudoku_checker",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
