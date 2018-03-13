@@ -1,37 +1,24 @@
-// export function Triangle(side1, side2, side3) {
-//   this.side1 = side1;
-//   this.side2 = side2;
-//   this.side3 = side3;
-// }
-//
-// Triangle.prototype.equilateral = function() {
-//   if (this.side1 === this.side2 && this.side2 === this.side3) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
-//
-// Triangle.prototype.isosceles = function() {
-//   if (this.side1 === this.side2 || this.side1 === this.side3 || this.side2 === this.side3) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
-//
-// Triangle.prototype.scalene = function() {
-//   if ((this.side1 != this.side2 && this.side1 != this.side3 && this.side2 != this.side3 ) && (this.side1 + this.side2 >= this.side3 && this.side2 + this.side3 >= this.side1 && this.side3 + this.side1 >= this.side2)) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
-//
-// Triangle.prototype.isTriangle = function () {
-//   if ((this.side1 > (this.side2 + this.side3)) || (this.side2 > (this.side1 + this.side3)) || (this.side3 > (this.side1 + this.side2))) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// };
+export function Solution(grid) {
+  this.grid = grid;
+}
+
+Solution.prototype.checkRow = function(rowIndex) {
+  var row = this.grid[rowIndex];
+  var result = arrayCompare(row, [1,2,3,4,5,6,7,8,9]);
+  return result;
+};
+
+var arrayCompare = function(arr1, arr2) {
+  arr1.sort();
+  arr2.sort();
+  if (arr1.length != arr2.length) {
+    return false;
+  } else {
+    for (var i=0; i<arr1.length; i++) {
+      if (arr1[i] != arr2[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+};
