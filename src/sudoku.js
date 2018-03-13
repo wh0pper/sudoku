@@ -32,14 +32,34 @@ Solution.prototype.checkUnit = function(unitIndex) {
   return result;
 };
 
+// Solution.prototype.checkAll = function() {
+//   var j;
+//   for (j = 0; j < 9; j++) {
+//     console.log(this.grid[0]);
+//     if ((this.checkUnit(j)) === false) {
+//       console.log("unit " + j);
+//       return false;
+//     } else if ((this.checkRow(j)) === false) {
+//       console.log("row " + j);
+//       return false;
+//     } else if ((this.checkColumn(j)) === false) {
+//       console.log("column " + j);
+//       return false;
+//     } else if (j === 8) {
+//       return true;
+//     }
+//   }
+// };
+
+
 var arrayCompare = function(arr1, arr2) {
-  arr1.sort();
-  arr2.sort();
-  if (arr1.length != arr2.length) {
+  var sorted1 = arr1.sort();
+  var sorted2 = arr2.sort();
+  if (sorted1.length != sorted2.length) {
     return false;
   } else {
-    for (var i=0; i<arr1.length; i++) {
-      if (arr1[i] != arr2[i]) {
+    for (var i=0; i<sorted1.length; i++) {
+      if (sorted1[i] != sorted2[i]) {
         return false;
       }
     }

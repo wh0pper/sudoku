@@ -6,7 +6,7 @@ module.exports = function(config) {
   config.set({
     browserConsoleLogOptions: {
       terminal: false,
-      level: ""
+      level: "debug"
     },
 
     // base path that will be used to resolve all patterns (eg. files, exclude)

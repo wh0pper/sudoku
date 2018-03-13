@@ -2,6 +2,7 @@ import {Solution} from './../src/sudoku.js';
 
 describe('Solution', function() {
   var solution;
+  var notSolution;
 
   beforeEach(function() {
     var row1 = [1,7,2,5,4,9,6,8,3];
@@ -13,8 +14,11 @@ describe('Solution', function() {
     var row7 = [9,6,4,7,1,5,3,2,8];
     var row8 = [7,3,1,6,8,2,5,9,4];
     var row9 = [5,2,8,9,3,4,1,6,7];
+    var row10 = [5,2,8,9,3,3,1,6,7];
     var grid = [row1, row2, row3, row4, row5, row6, row7, row8, row9];
+    var grid2 = [row1, row2, row3, row4, row5, row6, row7, row8, row10];
     solution = new Solution(grid);
+    notSolution = new Solution(grid2);
   });
 
   it('should have a 9x9 grid of numbers in a 2d array', function() {
@@ -31,7 +35,12 @@ describe('Solution', function() {
   });
 
   it('each unit 3x3 sub-square should have all numbers from 1 to 9 with no repeats', function() {
-    expect(solution.checkUnit(0)).toEqual(true);
+    expect(solution.checkUnit(1)).toEqual(true);
   });
+
+  // it('every condition, specifications listed above, should have all numbers from 1 to 9 with no repeats', function() {
+  //   expect(notSolution.checkAll()).toEqual(false);
+  //   expect(solution.checkAll()).toEqual(true);
+  // });
 
 });
