@@ -1,15 +1,16 @@
 import Helper from './helper';
 
 export class Solution {
-
-
   constructor(grid) {
     this.grid = grid;
   }
 
   checkRow(rowIndex) {
-    var row = this.grid[rowIndex];
-    var result = Helper.arrayCompare(row);
+    let row = [];
+    for(var i=0; i<9; i++) {
+      row.push(this.grid[rowIndex][i]);
+    }
+    let result = Helper.arrayCompare(row);
     return result;
   }
 
@@ -37,12 +38,12 @@ export class Solution {
     return result;
   }
 
-  // checkAll() {
-  //   for (var j = 0; j < 9; j++) {
-  //     if ((this.checkUnit(j)===false) || (this.checkRow(j)===false)) {
-  //       return false;
-  //     }
-  //   }
-  //   return true;
-  // }
+  checkAll() {
+    for (var j = 0; j < 9; j++) {
+      if ((this.checkUnit(j)===false) || (this.checkRow(j)===false) || (this.checkColumn(j)===false)) {
+        return false;
+      }
+    }
+    return true;
+  }
 }

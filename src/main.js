@@ -6,20 +6,28 @@ import {Solution} from './sudoku.js'
 $(document).ready(function() {
   $("#submit").submit(function(event) {
     event.preventDefault();
-    var storeRow = [];
-    var rowValues = [];
-    storeRow = document.getElementsByClassName("cell");
-    var row1 = document.getElementById('row1').getElementsByTagName('input');
-    console.log(row1[0].value);
+    var grid = [];
 
-    for(var i = 0; i < 9; i++) {
-      rowValues.push(parseInt(storeRow[i].value));
+    for (var i = 0; i < 9; i++) {
+      var rowName = `row${(i+1)}`;
+      var thisRow = document.getElementById(rowName).getElementsByTagName('input');
+      const thisRowArr = [];
+      for(var j = 0; j < 9; j++) {
+        if (thisRow[j].value === "") {
+          thisRowArr.push(0);
+        } else {
+          thisRowArr.push(parseInt(thisRow[j].value));
+        }
+      }
+      grid[i] = thisRowArr;
     }
 
-
-    console.log(rowValues);
-
-
+    var checkGrid = new Solution(grid);
+    if (checkGrid.checkAll()) {
+      $(".output span").text("you did it.");
+    } else {
+      $(".output span").text("you didn't do it.");
+    }
   });
 
 });

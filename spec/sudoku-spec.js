@@ -50,8 +50,7 @@ describe('Solution', function() {
     expect(notSolution.checkRow(8)).toEqual(false);
   });
 
-  // it('checks all conditions for entire grid', function() {
-  //   expect(solution.checkAll()).toEqual(true);
-  // });
-
+  it('checks all conditions for entire grid', function() {
+    expect(solution.checkAll()).toEqual(true);
+  });
 });
