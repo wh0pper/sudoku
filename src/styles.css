@@ -18,6 +18,12 @@ input {
   height: inherit;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9 {
   margin: 0;
   padding: 0;

@@ -27,19 +27,30 @@ describe('Solution', function() {
   });
 
   it('each row should have all numbers from 1 to 9 with no repeats', function() {
-    expect(solution.checkRow(3)).toEqual(true);
+    for (var i = 0; i < 9; i++) {
+      expect(solution.checkRow(3)).toEqual(true);
+    }
   });
 
   it('each column should have all numbers from 1 to 9 with no repeats', function() {
-    expect(solution.checkColumn(5)).toEqual(true);
+    for (var i = 0; i < 9; i++) {
+      expect(solution.checkColumn(i)).toEqual(true);
+    }
   });
 
   it('each unit 3x3 sub-square should have all numbers from 1 to 9 with no repeats', function() {
-    expect(solution.checkUnit(1)).toEqual(true);
+    for (var i = 0; i < 9; i++) {
+      expect(solution.checkUnit(i)).toEqual(true);
+    }
   });
 
-  // it('every condition, specifications listed above, should have all numbers from 1 to 9 with no repeats', function() {
-  //   expect(notSolution.checkAll()).toEqual(false);
+  it('incorrect solutions wont pass all tests', function() {
+    expect(notSolution.checkUnit(7)).toEqual(false);
+    expect(notSolution.checkColumn(5)).toEqual(false);
+    expect(notSolution.checkRow(8)).toEqual(false);
+  });
+
+  // it('checks all conditions for entire grid', function() {
   //   expect(solution.checkAll()).toEqual(true);
   // });
 
