@@ -5,20 +5,14 @@ describe('Generator', function() {
 var testGrid;
 
   beforeEach(function() {
-    testGrid = new Generator();
+    var row = [0,0,0,0,0,0,0,0,0];
+    var grid = [row, row, row, row, row, row, row, row, row];
+    testGrid = new Generator(grid);
+  });
+
+  it('should create a grid with numbers', function() {
+    expect(testGrid.checkEmpty()).toEqual([1,2,3]);
   });
 
 
-  it('should return an array with items 1-9', function() {
-    expect(testGrid.randomRow().length).toEqual(9);
-    var new_row = testGrid.randomRow();
-    expect(Helper.arrayCompare(new_row)).toEqual(true);
-  });
-
-  it('should return a second row with items 1-9, compatible with first row', function() {
-    var row1 = testGrid.randomRow();
-    var row2 = testGrid.nextRow();
-    expect(row2.length).toEqual(9);
-    expect(Helper.arrayCompare(row2)).toEqual(true);
-  });
 });

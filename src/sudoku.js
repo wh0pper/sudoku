@@ -10,7 +10,7 @@ export class Solution {
     for(var i=0; i<9; i++) {
       row.push(this.grid[rowIndex][i]);
     }
-    let result = Helper.arrayCompare(row);
+    let result = Helper.arrayCheck(row);
     return result;
   }
 
@@ -19,7 +19,7 @@ export class Solution {
     for(var i=0; i<this.grid.length; i++) {
       col.push(this.grid[i][colIndex]);
     }
-    var result = Helper.arrayCompare(col);
+    var result = Helper.arrayCheck(col);
     return result;
   }
 
@@ -34,11 +34,18 @@ export class Solution {
         unit.push(this.grid[j][i]);
       }
     }
-    var result = Helper.arrayCompare(unit);
+    var result = Helper.arrayCheck(unit);
     return result;
   }
 
   checkAll() {
+    //check for complete rows
+    for (var i = 0; i < 9; i++) {
+      if (this.grid[i].includes(0)) {
+        return false;
+      }
+    }
+    //check for unique value
     for (var j = 0; j < 9; j++) {
       if ((this.checkUnit(j)===false) || (this.checkRow(j)===false) || (this.checkColumn(j)===false)) {
         return false;

@@ -1,8 +1,10 @@
 import {Solution} from './../src/sudoku.js';
+import Helper from './../src/helper.js';
 
 describe('Solution', function() {
   var solution;
   var notSolution;
+  var incomplete;
 
   beforeEach(function() {
     var row1 = [1,7,2,5,4,9,6,8,3];
@@ -15,10 +17,14 @@ describe('Solution', function() {
     var row8 = [7,3,1,6,8,2,5,9,4];
     var row9 = [5,2,8,9,3,4,1,6,7];
     var row10 = [5,2,8,9,3,3,1,6,7];
+    var partialRow = [6,4,0,0,7,3,2,0,0];
+    var empty = [0,0,0,0,0,0,0,0,0];
+    var partialGrid = [row1, partialRow, empty, empty, empty, empty, empty, empty, empty];
     var grid = [row1, row2, row3, row4, row5, row6, row7, row8, row9];
     var grid2 = [row1, row2, row3, row4, row5, row6, row7, row8, row10];
     solution = new Solution(grid);
     notSolution = new Solution(grid2);
+    incomplete = new Solution(partialGrid);
   });
 
   it('should have a 9x9 grid of numbers in a 2d array', function() {
@@ -53,4 +59,20 @@ describe('Solution', function() {
   it('checks all conditions for entire grid', function() {
     expect(solution.checkAll()).toEqual(true);
   });
+
+  it('works when grid is incomplete', function() {
+    for (var i = 0; i < 9; i++) {
+      expect(incomplete.checkUnit(i)).toEqual(true);
+      expect(incomplete.checkRow(i)).toEqual(true);
+      expect(incomplete.checkColumn(i)).toEqual(true);
+    }
+
+  });
 });
+
+describe('Helper', function() {
+  it('returns false for arrays containing duplicates', function() {
+    var array = [5,2,8,9,3,3,1,6,7];
+    expect(Helper.arrayCheck(array)).toEqual(false);
+  });
+})
